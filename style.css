@@ -1,0 +1,13 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+.highscoreBtn {
+    display: inline;
+}
+
+.timer {
+    display: inline;
+}
