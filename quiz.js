@@ -1,3 +1,8 @@
+var questionText = document.getElementById("questionText")
+var choicesEl = document.getElementById("choices")
+var index = 4
+
+console.log(questionText, choicesEl)
 var questionList = [
     {
         text:"Inside which HTML element do we put the JavaScript?",
@@ -26,3 +31,20 @@ var questionList = [
     }
     
 ]
+
+// Trial Function
+
+function renderQuestion() {
+    questionText.innerText = questionList[index].text
+
+    choicesEl.innerHTML=""
+
+    for (var i = 0; i < questionList[index].choices.length; i++){
+        var li = document.createElement('li')
+        var choice = questionList[index].choices[i]
+        li.innerText = choice
+        choicesEl.appendChild(li)
+    }
+}
+
+renderQuestion();
