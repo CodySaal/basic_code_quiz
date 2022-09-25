@@ -25,7 +25,7 @@ var questionList = [
         choices: ["var colors = (1:'red', 2:'green', 3:'blue')", "var colors = ['red', 'green', 'blue']", "var colors = 'red', 'green', 'blue'", "var colors = 1 = ('red'), 2 = ('green'), 3 = ('blue')"]
     },
     {
-        text:"Which operator is used to assign a vvalue to a variable?",
+        text:"Which operator is used to assign a value to a variable?",
         answer: "=",
         choices: ["*", "-", "X", "="]
     }
@@ -47,9 +47,21 @@ function renderQuestion() {
     }
 }
 
+function startTimer() {
+    var timeLeft = 60;
+    var timer = setInterval(function(){
+        document.getElementById("insertTimer").innerHTML=timeLeft;
+        timeLeft--;
+        if (timeLeft < 0) {
+            clearInterval(timer);
+        }
+    }, 1000);
+}
+
 function startQuiz(){
     console.log("Start Quiz")
+    startTimer();
+    renderQuestion();
 }
-renderQuestion();
 
 document.getElementById("startBtn").addEventListener("click", startQuiz)
