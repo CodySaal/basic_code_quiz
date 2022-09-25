@@ -1,8 +1,8 @@
 var questionText = document.getElementById("questionText")
 var choicesEl = document.getElementById("choices")
+var startBtn = document.getElementsByClassName("startBtn")
 var index = 4
-
-console.log(questionText, choicesEl)
+console.log(startBtn)
 var questionList = [
     {
         text:"Inside which HTML element do we put the JavaScript?",
@@ -47,4 +47,9 @@ function renderQuestion() {
     }
 }
 
+function startQuiz(){
+    console.log("Start Quiz")
+}
 renderQuestion();
+
+document.getElementById("startBtn").addEventListener("click", startQuiz)
