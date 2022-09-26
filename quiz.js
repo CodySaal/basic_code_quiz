@@ -1,8 +1,10 @@
 var questionText = document.getElementById("questionText")
 var choicesEl = document.getElementById("choices")
-var startBtn = document.getElementsByClassName("startBtn")
-var index = 3
-console.log(startBtn)
+var scoreEl = document.getElementById("score")
+var index = 0
+var score = 0
+var timeLeft = 60
+var timer
 var questionList = [
     {
         text:"Inside which HTML element do we put the JavaScript?",
@@ -48,7 +50,6 @@ function renderQuestion() {
 }
 
 function startTimer() {
-    var timeLeft = 60;
     var timer = setInterval(function(){
         document.getElementById("insertTimer").innerHTML=timeLeft;
         timeLeft--;
@@ -58,19 +59,58 @@ function startTimer() {
     }, 1000);
 }
 
+
 function startQuiz(){
     console.log("Start Quiz")
+    toggleWelcome();
     startTimer();
     renderQuestion();
+    
 }
 
-// function grade(event){
-//     if (event.target.innerText === questionList[index].answer){
-//         console.log("You're Correct")
-//     } else {
-//         console.log("Incorrect")
-//     }
-// }
+function showScore() {
+    // Congrats on Completing the Quiz. Score:
+    scoreEl.innerHTML = score
+    // Enter initials:     submit
+    toggleQuiz();
+    // toggleResults();
+    document.getElementById("resultsPage").style.display = "block";
+    // showHighscores();
+}
+
+function showHighScores() {
+    //List of highscores
+    //go back and clear scores buttons
+}
+
+function continueQuiz(){
+    if (index < 5){
+        renderQuestion();
+    } else {
+        timeLeft = 0;
+        showScore();
+    }
+}
+
+function toggleWelcome(){
+    var welcome = document.getElementById("welcomeScreen");
+    if (welcome.style.display === "none"){
+        welcome.style.display = "block";
+    } else {
+        welcome.style.display = "none";
+    }
+}
+
+function toggleQuiz(){
+    var quiz = document.getElementById("questionScreen");
+    if (quiz.style.display === "none"){
+        quiz.style.display = "block";
+    } else {
+        quiz.style.display = "none";
+    }
+}
+
+
 
 document.getElementById("startBtn").addEventListener("click", startQuiz)
 
@@ -78,11 +118,23 @@ document.getElementById("choices").addEventListener("click", function (event){
     if (event.target && event.target.nodeName == "LI"){
         if (event.target.innerText === questionList[index].answer){
             console.log("You're Correct")
+            score += 5
+            index++
+            continueQuiz();
         } else {
             console.log("Incorrect")
+            if (timeLeft >= 5){
+                timeLeft = timeLeft - 5
+            } else {
+                timeLeft = 0
+            }
+            index++
+            continueQuiz();
+
         }
     } else{
         return;
     }
+    console.log(score);
+    console.log(index)
 })
-
