@@ -1,10 +1,13 @@
 var questionText = document.getElementById("questionText")
 var choicesEl = document.getElementById("choices")
 var scoreEl = document.getElementById("score")
+var formEl = document.getElementById("initialForm")
+var highscorePage = document.getElementById("highscorePage")
+var resultsPage = document.getElementById("resultsPage")
 var index = 0
 var score = 0
 var timeLeft = 60
-var timer
+var highscores = []
 var questionList = [
     {
         text:"Inside which HTML element do we put the JavaScript?",
@@ -33,8 +36,6 @@ var questionList = [
     }
     
 ]
-
-// Trial Function
 
 function renderQuestion() {
     questionText.innerText = questionList[index].text
@@ -69,13 +70,20 @@ function startQuiz(){
 }
 
 function showScore() {
-    // Congrats on Completing the Quiz. Score:
     scoreEl.innerHTML = score
     // Enter initials:     submit
+    formEl.addEventListener("submit", useform)
+    formEl
     toggleQuiz();
     // toggleResults();
-    document.getElementById("resultsPage").style.display = "block";
+    resultsPage.style.display = "block";
     // showHighscores();
+}
+
+function enterHighscore(event){
+    event.preventDefault()
+    var initials = document.querySelector("#initials").value;
+    console.log(initials)
 }
 
 function showHighScores() {
@@ -110,8 +118,13 @@ function toggleQuiz(){
     }
 }
 
+function useform(event){
+    event.preventDefault();
+    highscorePage.style.display = "block"
+    resultsPage.style.display = "none"
+}
 
-
+// formEl.addEventListener("submit", useform)
 document.getElementById("startBtn").addEventListener("click", startQuiz)
 
 document.getElementById("choices").addEventListener("click", function (event){
