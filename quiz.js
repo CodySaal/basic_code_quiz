@@ -9,6 +9,7 @@ var highscoresBtn = document.getElementById("highscoreBtn")
 var clearHighscoresBtn = document.getElementById("clearScores")
 var goHomeBtn = document.getElementById("goHome")
 var quizEl = document.getElementById("questionScreen");
+var timerEl = document.getElementById("timer")
 var index = 0
 var score = 0
 var timeLeft = 60
@@ -109,6 +110,7 @@ function enterHighscore(event){
 
 function showHighScores() {
     //List of highscores
+    timerEl.style.display = "none";
     document.getElementById("welcomeScreen").style.display = "none";
     document.getElementById("questionScreen").style.display = "none";
     resultsPage.style.display = "none";
