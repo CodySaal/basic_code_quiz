@@ -8,6 +8,7 @@ var resultsPage = document.getElementById("resultsPage")
 var highscoresBtn = document.getElementById("highscoreBtn")
 var clearHighscoresBtn = document.getElementById("clearScores")
 var goHomeBtn = document.getElementById("goHome")
+var quizEl = document.getElementById("questionScreen");
 var index = 0
 var score = 0
 var timeLeft = 60
@@ -95,7 +96,7 @@ function showScore() {
     // Enter initials:     submit
     formEl.addEventListener("submit", useform)
     formEl
-    toggleQuiz();
+    quizEl.style.display = "none";
     // toggleResults();
     resultsPage.style.display = "block";
     // showHighscores();
@@ -130,15 +131,6 @@ function toggleWelcome(){
         welcome.style.display = "block";
     } else {
         welcome.style.display = "none";
-    }
-}
-
-function toggleQuiz(){
-    var quiz = document.getElementById("questionScreen");
-    if (quiz.style.display === "none"){
-        quiz.style.display = "block";
-    } else {
-        quiz.style.display = "none";
     }
 }
 
