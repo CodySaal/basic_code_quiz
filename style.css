@@ -4,7 +4,7 @@ header {
     margin: 5px;
 }
 
-.highscoreBtn {
+#highscoreBtn {
     display: inline;
 }
 
