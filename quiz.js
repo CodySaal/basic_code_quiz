@@ -120,8 +120,21 @@ function toggleQuiz(){
 
 function useform(event){
     event.preventDefault();
+    var initials = document.querySelector("#initials").value;
+    console.log(initials)
+    console.log(score)
+    var indHighscore = {
+        initials: initials,
+        score: score
+    }
+    highscores.push(indHighscore)
+    storeHighscore();
     highscorePage.style.display = "block"
     resultsPage.style.display = "none"
+}
+
+function storeHighscore(){
+    localStorage.setItem("highscores", JSON.stringify(highscores))
 }
 
 // formEl.addEventListener("submit", useform)
