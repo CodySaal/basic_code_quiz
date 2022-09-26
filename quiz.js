@@ -1,7 +1,7 @@
 var questionText = document.getElementById("questionText")
 var choicesEl = document.getElementById("choices")
 var startBtn = document.getElementsByClassName("startBtn")
-var index = 4
+var index = 3
 console.log(startBtn)
 var questionList = [
     {
@@ -64,4 +64,25 @@ function startQuiz(){
     renderQuestion();
 }
 
+// function grade(event){
+//     if (event.target.innerText === questionList[index].answer){
+//         console.log("You're Correct")
+//     } else {
+//         console.log("Incorrect")
+//     }
+// }
+
 document.getElementById("startBtn").addEventListener("click", startQuiz)
+
+document.getElementById("choices").addEventListener("click", function (event){
+    if (event.target && event.target.nodeName == "LI"){
+        if (event.target.innerText === questionList[index].answer){
+            console.log("You're Correct")
+        } else {
+            console.log("Incorrect")
+        }
+    } else{
+        return;
+    }
+})
+

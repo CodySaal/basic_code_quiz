@@ -11,3 +11,9 @@ header {
 .timer {
     display: inline;
 }
+
+li {
+    background-color: aqua;
+    width: fit-content;
+    margin: 10px;
+}
