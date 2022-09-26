@@ -76,6 +76,7 @@ function startTimer() {
         timeLeft--;
         if (timeLeft < 0) {
             clearInterval(timer);
+            showScore();
         }
     }, 1000);
 }
