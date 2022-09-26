@@ -10,6 +10,9 @@ var clearHighscoresBtn = document.getElementById("clearScores")
 var goHomeBtn = document.getElementById("goHome")
 var quizEl = document.getElementById("questionScreen");
 var timerEl = document.getElementById("timer")
+var correctEl = document.getElementById("correct")
+var incorrectEl = document.getElementById("incorrect")
+var feedbackEl = document.getElementById("feedback")
 var index = 0
 var score = 0
 var timeLeft = 60
@@ -100,6 +103,7 @@ function showScore() {
     quizEl.style.display = "none";
     // toggleResults();
     resultsPage.style.display = "block";
+    feedbackEl.style.display = "none"
     // showHighscores();
 }
 
@@ -110,6 +114,7 @@ function enterHighscore(event){
 
 function showHighScores() {
     //List of highscores
+    feedbackEl.style.display = "none"
     timerEl.style.display = "none";
     document.getElementById("welcomeScreen").style.display = "none";
     document.getElementById("questionScreen").style.display = "none";
@@ -191,11 +196,15 @@ document.getElementById("choices").addEventListener("click", function (event){
     if (event.target && event.target.nodeName == "LI"){
         if (event.target.innerText === questionList[index].answer){
             console.log("You're Correct")
+            correctEl.style.display = "block"
+            incorrectEl.style.display = "none"
             score += 5
             index++
             continueQuiz();
         } else {
             console.log("Incorrect")
+            correctEl.style.display = "none"
+            incorrectEl.style.display = "block"
             if (timeLeft >= 5){
                 timeLeft = timeLeft - 5
             } else {

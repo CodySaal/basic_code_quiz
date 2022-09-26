@@ -32,3 +32,23 @@ li {
 #highscorePage{
     display: none;
 }
+
+#correct{
+    display: none;
+}
+
+#incorrect{
+    display: none;
+}
+
+.container {
+    text-align: center;
+}
+
+#choices, #highScoresList {
+    display: inline-block;
+}
+
+#welcomeScreen p {
+    padding: 25px;
+}
