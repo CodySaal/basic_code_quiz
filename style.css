@@ -11,7 +11,7 @@ header {
 .timer {
     display: inline;
 }
-
+/* Colors all list items */
 li {
     background-color: purple;
     color: white;
@@ -24,27 +24,15 @@ li {
 #questionText{
     font-size: larger;
 }
-
-#resultsPage{
+/* Hides these pages until they are called */
+#resultsPage, #highscorePage, #correct, #incorrect{
     display: none;
 }
-
-#highscorePage{
-    display: none;
-}
-
-#correct{
-    display: none;
-}
-
-#incorrect{
-    display: none;
-}
-
+/* Alligns everything but lists in the center */
 .container {
     text-align: center;
 }
-
+/* Alligns lists in the center */
 #choices, #highScoresList {
     display: inline-block;
 }

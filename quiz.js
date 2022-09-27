@@ -1,3 +1,4 @@
+// DOM Selectors
 var questionText = document.getElementById("questionText")
 var choicesEl = document.getElementById("choices")
 var scoreEl = document.getElementById("score")
@@ -13,10 +14,12 @@ var timerEl = document.getElementById("timer")
 var correctEl = document.getElementById("correct")
 var incorrectEl = document.getElementById("incorrect")
 var feedbackEl = document.getElementById("feedback")
+// Global Variables
 var index = 0
 var score = 0
 var timeLeft = 60
 var highscores = []
+// Contains all of the questions, correct answers, and choices
 var questionList = [
     {
         text:"Inside which HTML element do we put the JavaScript?",
@@ -43,8 +46,8 @@ var questionList = [
         answer: "=",
         choices: ["*", "-", "X", "="]
     }
-    
 ]
+// Loads highscores from local storage then places them into the list
 function loadHighscores(){
     var loadedHighscores = localStorage.getItem("highscores")
         if (!loadedHighscores){
@@ -59,9 +62,11 @@ function loadHighscores(){
     }
 }
 loadHighscores();
+// Stores the users latest score as a highscore
 function storeHighscore(){
     localStorage.setItem("highscores", JSON.stringify(highscores))
 }
+// Puts the next question on screen
 function renderQuestion() {
     questionText.innerText = questionList[index].text
 
@@ -74,7 +79,7 @@ function renderQuestion() {
         choicesEl.appendChild(li)
     }
 }
-
+// Starts game timer and shows result if timer hits 0
 function startTimer() {
     var timer = setInterval(function(){
         document.getElementById("insertTimer").innerHTML=timeLeft;
@@ -85,8 +90,7 @@ function startTimer() {
         }
     }, 1000);
 }
-
-
+// Moves from welcome page to quiz page and starts timer
 function startQuiz(){
     console.log("Start Quiz")
     toggleWelcome();
@@ -94,35 +98,30 @@ function startQuiz(){
     renderQuestion();
     
 }
-
+// shows final score after taking quiz
 function showScore() {
     scoreEl.innerHTML = score
-    // Enter initials:     submit
     formEl.addEventListener("submit", useform)
     formEl
     quizEl.style.display = "none";
-    // toggleResults();
     resultsPage.style.display = "block";
     feedbackEl.style.display = "none"
-    // showHighscores();
 }
-
+// Gets value for highscore
 function enterHighscore(event){
     event.preventDefault()
     var initials = document.querySelector("#initials").value;
 }
-
+// Shows highscore page
 function showHighScores() {
-    //List of highscores
     feedbackEl.style.display = "none"
     timerEl.style.display = "none";
     document.getElementById("welcomeScreen").style.display = "none";
     document.getElementById("questionScreen").style.display = "none";
     resultsPage.style.display = "none";
     highscorePage.style.display = "block"
-    //go back and clear scores buttons
 }
-
+// Checks to see if there is another question left. (If I was going to add questions I could change the 5 to a .length value)
 function continueQuiz(){
     if (index < 5){
         renderQuestion();
@@ -152,29 +151,13 @@ function useform(event){
     }
     highscores.push(indHighscore)
     storeHighscore(); 
-    //Test
     var highscoreEl = document.createElement("li");
     highscoreEl.innerHTML = indHighscore.initials + " | " + indHighscore.score;
     highscoreList.appendChild(highscoreEl);
     highscorePage.style.display = "block"
     resultsPage.style.display = "none"
 }
-
-// function storeHighscore(){
-//     localStorage.setItem("highscores", JSON.stringify(highscores))
-// }
-
-// function loadHighscores(){
-//     var loadedHighscores = localStorage.getItem("highscores");
-//     loadedHighscores = JSON.parse(loadedHighscores);
-//     for (var i = 0; i < loadedHighscores.length; i++){
-//         var highscoreEl = document.createElement("li");
-//         highscoreEl.innerText = loadedHighscores[i].initials + " | " + loadedHighscores[i].score;
-//         highscoreList.appendChild(highscoreEl);
-//         highscores.push(loadedHighscores[i]);
-//     }
-// }
-
+// Clears highscore list
 function clearHighscores(){
     highscores = []
     while (highscoreList.firstChild){
@@ -182,9 +165,7 @@ function clearHighscores(){
     }
     localStorage.clear(highscores);
 }
-
-
-// formEl.addEventListener("submit", useform)
+// Event Listeners
 goHomeBtn.addEventListener("click", function(){
     window.location.reload();
 })
