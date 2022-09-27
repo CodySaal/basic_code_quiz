@@ -14,13 +14,12 @@ N/A
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+To use this project start by clicking the "Test your Knowledge" button. You will be asked to answer 5 multiple choice questions. You earn points for every question you get correct and you lose time for every question you get wrong. The quiz ends when you get through all the questions or you run out of time. After the quiz you get to save your score to the highscore page. You can access the highscore page after submiting yours or by pressing the "Highscores" button in the top left of the screen. You can also clear the highscore list if you want to start the list over.
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+![Site Screenshot](assets/images/coding_quiz.png)
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+Live site: https://codysaal.github.io/basic_code_quiz/
+
 
 ## Credits
 
